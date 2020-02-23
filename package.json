@@ -1,0 +1,46 @@
+{
+  "name": "sliceandshoot",
+  "version": "1.0.0",
+  "description": "To run:",
+  "main": "webpack.config.js",
+  "author": "Clinton Medbery",
+  "license": "ISC",
+  "scripts": {
+    "test": "jest",
+    "build": "rm -rf ./dist && NODE_ENV='production' webpack",
+    "start": "webpack-dev-server",
+    "lint:fix": "eslint --ignore-path .gitignore . --fix",
+    "lint": "eslint --ignore-path .gitignore .",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "phaser": "^3.20.1"
+  }
+}
