@@ -1,6 +1,6 @@
 To run:
 
-npm install -g live-server
+```npm install```
 
-live-server
+```npm run start```
 
