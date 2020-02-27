@@ -11,11 +11,11 @@ const config = {
   parent: "game-container",
   // "render": {"pixelArt": true},
   physics: {
-    default: 'arcade',
+    default: "arcade",
     arcade: {
       gravity: { y: 500 },
-      debug: true,
-    },
+      debug: true
+    }
   },
   scale: {
     mode: Phaser.Scale.FIT,

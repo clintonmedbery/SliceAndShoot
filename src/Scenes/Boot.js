@@ -10,8 +10,7 @@ class Boot extends Phaser.Scene {
     this.load.image("tiles", spaceTileset);
     // Load the export Tiled JSON
     this.load.tilemapTiledJSON("map", arenaMap);
-    this.load.atlas('player', advenAtlasPng,advenAtlasJson);
-
+    this.load.atlas("player", advenAtlasPng, advenAtlasJson);
   }
 
   create() {

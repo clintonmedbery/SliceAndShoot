@@ -10,8 +10,7 @@ class Arena extends Phaser.Scene {
 
   preload() {
     console.log("Preloading Arena");
-    this.load.atlas('player', advenAtlasPng, advenAtlasJson);
-
+    this.load.atlas("player", advenAtlasPng, advenAtlasJson);
   }
 
   create() {
@@ -24,25 +23,25 @@ class Arena extends Phaser.Scene {
 
     console.log(platforms);
 
-    this.player = this.physics.add.sprite(100, 300, 'player');
+    this.player = this.physics.add.sprite(100, 300, "player");
     this.player.setBounce(0.1);
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, platforms);
 
     this.anims.create({
-      key: 'idle',
-      frames: this.anims.generateFrameNames('player', {
-        prefix: 'adventurer-idle-0',
+      key: "idle",
+      frames: this.anims.generateFrameNames("player", {
+        prefix: "adventurer-idle-0",
         start: 0,
-        end: 1,
+        end: 1
       }),
       frameRate: 2,
       repeat: -1
     });
 
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.player.play('idle', true);
-    this.go = new Player(this)
+    this.player.play("idle", true);
+    this.go = new Player(this);
   }
 
   update() {
@@ -50,12 +49,12 @@ class Arena extends Phaser.Scene {
     if (this.cursors.left.isDown) {
       this.player.setVelocityX(-200);
       if (this.player.body.onFloor()) {
-        this.player.play('walk', true);
+        this.player.play("walk", true);
       }
     } else if (this.cursors.right.isDown) {
       this.player.setVelocityX(200);
       if (this.player.body.onFloor()) {
-        this.player.play('walk', true);
+        this.player.play("walk", true);
       }
     } else {
       // If no keys are pressed, the player keeps still
@@ -63,15 +62,18 @@ class Arena extends Phaser.Scene {
       // Only show the idle animation if the player is footed
       // If this is not included, the player would look idle while jumping
       if (this.player.body.onFloor()) {
-        this.player.play('idle', true);
+        this.player.play("idle", true);
       }
     }
 
-// Player can jump while walking any direction by pressing the space bar
-// or the 'UP' arrow
-    if ((this.cursors.space.isDown || this.cursors.up.isDown) && this.player.body.onFloor()) {
+    // Player can jump while walking any direction by pressing the space bar
+    // or the 'UP' arrow
+    if (
+      (this.cursors.space.isDown || this.cursors.up.isDown) &&
+      this.player.body.onFloor()
+    ) {
       this.player.setVelocityY(-350);
-      this.player.play('jump', true);
+      this.player.play("jump", true);
     }
 
     if (this.player.body.velocity.x > 0) {
@@ -81,7 +83,6 @@ class Arena extends Phaser.Scene {
       this.player.setFlipX(true);
     }
   }
-
 }
 
 export default Arena;
